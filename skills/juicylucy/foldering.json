@@ -1,0 +1,28 @@
+{
+  "_owner": "The ad-set folder grammar and the global sequence discipline. Engine skills read this file rather than restating it.",
+  "hierarchy": "CAMPAIGN_ROOT/YYYY.MM.DD/LANGUAGE/AD_SET_NAME",
+  "dated_folder": {
+    "format": "YYYY.MM.DD",
+    "rule": "Normalized from the intended publish day. A pre-existing date folder is reused only on an explicit same-date-continuation confirmation, and then its contents are immutable: existing allocation preserved, nothing renumbered."
+  },
+  "language_folder": {
+    "rule": "Full language name spelled out, e.g. 'Chinese (Simplified)'. One folder per approved language; never two languages in one numbered ad-set folder."
+  },
+  "ad_set_pattern": "#NNNN LL - BATCH - N Ads - ICP - FORMAT",
+  "tokens": {
+    "#NNNN": "Four digits, zero-padded, globally unique across the entire campaign parent — all dates, all languages, both mediums.",
+    "LL": "Language code, matching the filenames' leading market token.",
+    "BATCH": "Persona/batch descriptor, e.g. GEN, Creators, Home Lifestyle, Mixed.",
+    "N Ads": "The actual final creative count. The folder must be renamed if redistribution changes it.",
+    "ICP": "Mix ICP | Mixed ICP | Unique ICP.",
+    "FORMAT": "Static Format | Video Format | Mix Formats."
+  },
+  "grammar_not_template": "Copy the exact pattern of the nearest recent production folders and change only the sequence, the language code, and fields the new campaign explicitly requires. If sibling folders and the brief disagree, pause and ask which controls.",
+  "sequence": {
+    "digits": 4,
+    "scope": "Global: scan the campaign parent recursively for '#' plus four digits, across every date, language, and medium.",
+    "shared_across_mediums": true,
+    "reservation": "Find the global maximum, allocate one contiguous ordered block covering the whole request (batches x languages), write the mapping to a manifest, and re-scan immediately before mkdir; if anything was claimed meanwhile, recompute the not-yet-created remainder from the new maximum.",
+    "never": "Never infer the next number from memory, chat, a tracker, or a single language folder. Filesystem counts are authoritative."
+  }
+}

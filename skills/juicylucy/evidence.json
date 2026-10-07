@@ -1,0 +1,41 @@
+{
+  "_owner": "The evidence layout for a production batch: what counts as a final ad, the acceptance gate, and where QA records live.",
+  "counting_rule": "A final ad is a final creative directly inside a numbered ad-set folder. Exclude .qa files, contact sheets, rejected drafts, generation caches, and source originals. Report localized totals and source-inclusive totals separately.",
+  "asset_gate": {
+    "format": "PNG",
+    "mode": "RGB",
+    "min_width": 900,
+    "min_height": 1500,
+    "aspect_min": 0.53,
+    "aspect_max": 0.59,
+    "min_bytes": 50000,
+    "note": "This gate is a floor. A campaign contract may additionally pin exact geometry (e.g. the source's exact pixel dimensions); the contract wins."
+  },
+  "qa_package": {
+    "location": "<LANGUAGE ROOT>/.qa/",
+    "files": [
+      "retry-ledger.md",
+      "translation-provenance.md",
+      "production-timing.md",
+      "OCR_STATUS.md (plus raw OCR output)",
+      "batch-<number>-qa.md (one per batch)",
+      "contact-sheets/ (one reviewed sheet per batch)",
+      "final-qa-report.json",
+      "FINAL_QA.md"
+    ],
+    "note": "Use the project's established filenames when equivalent evidence already exists (scoped variants like .qa-<purpose>/ are legitimate)."
+  },
+  "language_progress": "<LANGUAGE ROOT>/PROGRESS.md",
+  "project_state": {
+    "file": "PROJECT_STATE.md at the campaign root, coordinator-owned",
+    "rule": "Absolute paths, source-to-target mapping, numbering, current checkpoint, attempts consumed, limits, QA state, and the exact next asset. Updated after every batch, retry, lane change, limit event, incident, and final-QA milestone. A resumed session reconciles the filesystem first and never restarts from chat memory."
+  },
+  "contact_sheets": {
+    "columns": 5,
+    "thumb_size": [282, 502],
+    "background": "#191919",
+    "output": "<output>/<#NNNN LL>-contact-sheet.jpg",
+    "rule": "Every tile is reviewed for hierarchy, fidelity, readability, and text defects; a sheet is regenerated after each batch."
+  },
+  "retention": "Anything dated — ledgers, reports, performance tables — is evidence, not instruction. Date-stamp it and read it as a record of what was true then."
+}

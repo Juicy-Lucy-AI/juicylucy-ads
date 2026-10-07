@@ -1,0 +1,16 @@
+{
+  "language": "[Target language name]",
+  "source_root": "/absolute/path/to/[source language folder]",
+  "target_root": "/absolute/path/to/[target language folder]",
+  "source_code": "[LL]",
+  "target_code": "[LL]",
+  "expected_suffix": "_[YYYY.MM.DD].png",
+  "ocr_path": "/absolute/path/to/[target]/.qa/ocr.json",
+  "batches": [
+    {
+      "source_folder": "[#NNNN LL - exact source folder name]",
+      "target_folder": "[#NNNN LL - exact inherited folder name]",
+      "expected_count": 0
+    }
+  ]
+}

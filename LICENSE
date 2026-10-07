@@ -1,0 +1,59 @@
+JuicyLucy Ads — Licence
+Copyright 2026 Juicy Lucy AI, UAB. All rights reserved.
+
+JuicyLucy Ads (the "Software") is proprietary software of Juicy Lucy AI, UAB
+("JuicyLucy"), a company registered in Lithuania, company code 307637084,
+with its registered address at Tiltų g. 19, LT-91249 Klaipėda, Lithuania.
+The Software is not open source.
+
+1. Permitted use and customization. JuicyLucy grants you a non-exclusive,
+   non-transferable licence to install, use, copy, modify, adapt, translate
+   and create derivative works of the Software for your own lawful personal,
+   professional and business purposes, including work you perform for clients.
+   Obtain the Software through the channels JuicyLucy provides (the OpenAI
+   plugin directory, a JuicyLucy release, or an authorised workspace).
+   You may customize its skills, instructions, workflows, templates and
+   configuration without asking for permission or submitting your changes
+   to JuicyLucy. You may keep backup copies and share original or modified
+   copies internally with employees and contractors working on your behalf,
+   solely for those purposes and subject to this licence. Keep the licence
+   and attribution notices with those copies. Use of the JuicyLucy generation
+   service remains subject to its account and credit requirements and the
+   JuicyLucy terms and conditions at
+   https://www.juicylucy.io/terms-conditions.
+
+2. Distribution of the Software. Except as permitted in sections 1 and 3,
+   you may not distribute, publish, sublicense, sell or rent the Software
+   or modified copies of it, in whole or in part, without JuicyLucy's prior
+   written permission. These restrictions concern the Software itself:
+   they do not prevent you from using, publishing, delivering or selling
+   creative work produced with it, subject to applicable content rights and
+   service terms. They also do not restrict your independently created
+   skills, brand materials or other content that do not contain copies or
+   adaptations of the Software.
+
+3. Third-party components. The Software bundles components licensed to
+   JuicyLucy by third parties under their own terms. Those components, their
+   licences and the required attributions are identified in NOTICE and
+   THIRD_PARTY_LICENSES, and nothing in this licence limits the rights those
+   licences grant you in those components.
+
+4. Warranties and liability. To the extent permitted by applicable law, the
+   Software is provided "as is", without warranties of uninterrupted or
+   error-free operation or fitness for a particular purpose. Nothing in this
+   licence excludes or limits mandatory consumer rights, remedies, or
+   liability that cannot lawfully be excluded or limited, including liability
+   for fraud, wilful misconduct or gross negligence. Third-party components
+   remain subject to their own licences. The hosted service's terms do not
+   reduce the permissions granted for the Software in sections 1 and 3.
+
+5. Termination. JuicyLucy may terminate this licence for a material breach.
+   For a breach that can be remedied, we will normally give notice and allow
+   14 days to remedy it. Immediate termination may be necessary for unlawful
+   use, an urgent security threat or a legal requirement. On termination,
+   stop using the Software and delete your copies of it. This does not
+   require deletion of creative work you produced or independently created
+   materials, or terminate rights granted under third-party licences.
+   Closing a hosted-service account alone does not terminate this licence.
+
+Contact: plugin@juicylucy.io

@@ -1,0 +1,38 @@
+JuicyLucy Ads
+Copyright 2026 Juicy Lucy AI, UAB. All rights reserved.
+
+JuicyLucy Ads is proprietary software; its licence is in the LICENSE file
+alongside this NOTICE. Every skill in this product is JuicyLucy's own work,
+except the eleven listed below.
+
+This product bundles skills from HyperFrames
+(https://github.com/heygen-com/hyperframes), Copyright 2026 HeyGen, Inc.,
+licensed under the Apache License, Version 2.0. A copy of that licence is in
+the THIRD_PARTY_LICENSES file alongside this NOTICE and at
+http://www.apache.org/licenses/LICENSE-2.0. The skills were taken at commit
+58c873d8161d6a2357eacf89a540bfecc359349b of that repository, which carries no
+NOTICE file of its own, and are shipped here as the skills
+
+    captions-overlay, cut-the-curve, hyperframes-animation, hyperframes-audio,
+    hyperframes-cli, hyperframes-core, hyperframes-keyframes, media-use,
+    motion-doctrine, oversized-cursor, seam-craft
+
+under skills/. The source repository preserves the vendored files verbatim.
+When producing the shipped copies, JuicyLucy excludes tests and evals,
+redirects hyperframes-cli's render-approval reference to video-ad-production's gate policy,
+replaces hyperframes-animation's instructions to install the third-party
+`animate-text` skill with its own build-from-description fallback,
+replaces unversioned `npx hyperframes` invocations with `hyperframes` so
+the installed, pinned CLI is used, points command invocations of the
+installed tools at their launchers under `~/.juicylucy/bin`, replaces
+hyperframes-cli's upgrade instructions with the plugin's pinned-CLI rule, and rewrites the folded multi-line
+`description` of hyperframes-audio, hyperframes-cli and hyperframes-keyframes
+as one quoted line with the same words, and removes the upstream-only
+`metadata: internal: true` flag from the frontmatter of captions-overlay,
+cut-the-curve, motion-doctrine, oversized-cursor and seam-craft. These are
+JuicyLucy's distribution changes.
+Each modified upstream file also carries a prominent modification notice.
+The pinned commit is recorded in
+vendor/hyperframes/UPSTREAM.lock in the source repository; the build checks
+that this NOTICE names the same commit. The Apache licence applies to those
+eleven skills only, not to the rest of this product.

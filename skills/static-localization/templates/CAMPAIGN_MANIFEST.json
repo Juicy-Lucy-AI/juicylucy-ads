@@ -1,0 +1,15 @@
+{
+  "project": "[YYYY.MM.DD] multilingual localization",
+  "source_root": "/absolute/path/to/[source language folder]",
+  "campaign_root": "/absolute/path/to/[YYYY.MM.DD]",
+  "languages_expected": 0,
+  "folders_expected": 0,
+  "images_expected": 0,
+  "source_images_expected": 0,
+  "language_manifests": [
+    "manifests/[language-1].json"
+  ],
+  "counting_rule": "Final localized creatives directly inside numbered ad-set folders; excludes .qa, contact sheets, rejected drafts, caches, and source originals",
+  "approach": "[Strict fresh-source, original source only, maximum two image-producing attempts]",
+  "uploader_reconciled": false
+}

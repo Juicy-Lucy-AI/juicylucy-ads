@@ -1,0 +1,12 @@
+{
+  "_owner": "How languages and ad sets are allocated across active campaigns for a production batch.",
+  "min_ad_sets_per_active_campaign": 5,
+  "languages_per_campaign": "ceil(min_ad_sets_per_active_campaign / ad_sets_per_language)",
+  "worked_table": { "1": 5, "2": 3, "3": 2, "4": 2, "5": 1 },
+  "minimum_not_maximum": "5 ad sets per campaign is a minimum allocation target, not a fixed language count or a ceiling; rounding up may yield more.",
+  "coverage": "Every campaign the user's campaign structure marks active for new ads gets its requirement; sum per-campaign requirements for the batch total. A smaller user-requested total is corrected and reported during preflight, never silently honoured by omitting an active campaign.",
+  "ranking": "Rank candidate languages within their assigned campaign by meaningful conversion volume and cost efficiency together; never on one metric alone, and never promoted on a single-conversion CPA. Campaign membership comes from the user's campaign structure; a language is not moved between campaigns because of its global rank.",
+  "exclusions": "Languages already included in the current dated batch (or other user-named batches). A historical folder alone does not disqualify a language when the task is to iterate on proven languages.",
+  "sources": "The campaign structure and the per-language performance export, named in the brand's ad-account.md or supplied in the conversation. Take a fresh copy immediately before selection; a prior snapshot is never a source. When neither exists, ask for the languages rather than ranking from memory.",
+  "preflight": "Present campaign, language, results, spend, CPA, ad sets per language, total planned ad sets, rank, and exclusion rationale — with evidence — before creating subfolders."
+}

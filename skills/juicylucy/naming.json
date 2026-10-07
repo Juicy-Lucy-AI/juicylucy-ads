@@ -1,0 +1,50 @@
+{
+  "_owner": "The export filename token grammar. One grammar, two mediums; engine code and prose read this file rather than restating it.",
+  "pattern": "[Market] - [Creative Name] - {author}_{format}_R-{ratio}_AL-{funnel}_TB-{source}_TH-na_FB-{style}_{date}.{ext}",
+  "segment_rule": "Exactly two dash-separated name segments before the code block: Market, then Creative Name. There is no hook/angle segment.",
+  "market": {
+    "rule": "The language code uppercased (de -> DE, pt-br -> PT-BR), matching a code in languages.json.",
+    "localization_rule": "Only the leading market token differs across a localization set. The remaining basename is inherited byte-for-byte: version number, metadata block, date, extension, and folder membership."
+  },
+  "creative_name": {
+    "rule": "2-4 words, Title Case, unique per visual concept. Spaces are fine; underscores are not.",
+    "versioning": "First version carries no suffix; later versions append ' 2', ' 3', ... to the same base name."
+  },
+  "funnel_stages": ["TOF", "MOF", "BOF"],
+  "source": {
+    "known": ["winner", "competitor", "brief"],
+    "open_set": true,
+    "rule": "Single lowercase word recording where the concept came from."
+  },
+  "fixed": {
+    "TH": "na",
+    "rule": "TH- is reserved and unused; always literally 'TH-na'. Never invent a value."
+  },
+  "ratio": {
+    "default": "9x16",
+    "rule": "The artifact's actual aspect ratio (9x16, 1x1, 4x5, 16x9). Derived from the file, never guessed."
+  },
+  "date": {
+    "format": "YYYY.MM.DD",
+    "rule": "Stamped on the first write and preserved afterwards. A localization inherits the source date when the campaign contract requires it."
+  },
+  "mediums": {
+    "static": {
+      "author": "AUTO",
+      "format": "F-IMG",
+      "extensions": ["png", "jpg"],
+      "styles": ["imagestatic", "textoverlay"],
+      "styles_open_set": true
+    },
+    "video": {
+      "author": "PRO",
+      "format": "F-VID",
+      "extensions": ["mp4"],
+      "styles": ["videotextoverlay", "videoreaction", "beforeandafter", "videoother"],
+      "styles_open_set": true
+    }
+  },
+  "style_rule": "FB- vocabularies are per-medium and never shared: a video file never carries a statics style and vice versa. New values are lowercase, one word, descriptive, and adding one is a deliberate edit to this file.",
+  "legacy_authors": [],
+  "legacy_note": "No legacy author constants. If an archive of yours carries an older author token, list it here so the tool recognises those files; never hand-write a filename where tooling authors it."
+}
