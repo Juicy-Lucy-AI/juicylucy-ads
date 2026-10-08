@@ -1,6 +1,6 @@
 ---
 name: static-copywriting
-description: Write, review, or localize the copy for static image ads — hooks, overlay text, body copy, and CTA — so it converts and complies with Meta's advertising policies. Use when drafting copy for a static ad batch, generating diverse test variations per concept (typically 5), rewriting a rejected or risky draft, locking localized copy before image generation, or judging whether a line will trip Meta's fraud/scams/deceptive-practices review. Applies the platform rejection taxonomy — absolutes, fabricated precision, guaranteed outcomes, fake urgency, scam-coded formats — which lives in the ad-platform skill's rejection-taxonomy.md, not here. Product facts come from the resolved brand-<slug> skill, never from here.
+description: Write, review, or localize the copy for static image ads — hooks, overlay text, body copy, and CTA — so it converts and complies with Meta's advertising policies. Use when drafting copy for a static ad batch, generating diverse test variations per concept (typically 5), rewriting a rejected or risky draft, locking localized copy before image generation, or judging whether a line will trip Meta's fraud/scams/deceptive-practices review. Applies the platform rejection taxonomy — absolutes, fabricated precision, guaranteed outcomes, fake urgency, scam-coded formats — which lives in the ad-platform skill's rejection-taxonomy.md, not here. Product facts come from the resolved brand skill (a `brand-*` skill), never from here.
 ---
 
 # Static ad copywriting
