@@ -29,8 +29,11 @@ hyperframes-cli's upgrade instructions with the plugin's pinned-CLI rule, and re
 `description` of hyperframes-audio, hyperframes-cli and hyperframes-keyframes
 as one quoted line with the same words, and removes the upstream-only
 `metadata: internal: true` flag from the frontmatter of captions-overlay,
-cut-the-curve, motion-doctrine, oversized-cursor and seam-craft. These are
-JuicyLucy's distribution changes.
+cut-the-curve, motion-doctrine, oversized-cursor and seam-craft. It also
+leaves out media-use's own audio engine with its third-party voice, music and
+sound-effect provider integrations and bundled sound effects, and
+hyperframes-cli's hosted cloud-rendering reference, and rewrites the lines
+that pointed at them. These are JuicyLucy's distribution changes.
 Each modified upstream file also carries a prominent modification notice.
 The pinned commit is recorded in
 vendor/hyperframes/UPSTREAM.lock in the source repository; the build checks

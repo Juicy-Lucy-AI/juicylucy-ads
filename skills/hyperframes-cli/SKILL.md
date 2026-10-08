@@ -3,7 +3,7 @@ name: hyperframes-cli
 description: "Use the HyperFrames CLI development loop: init, add, catalog, capture, lint, check, snapshot, compare, grade-compare, preview, play, present, beats, keyframes, single or batch render, publish, cloud, cloudrun, feedback, lambda, doctor, browser, info, upgrade, skills, compositions, timeline, docs, benchmark, telemetry, transcribe, auth, tts, and remove-background. Also use when diagnosing build or render failures. validate, inspect, and layout are deprecated aliases; use check. Covers local, HeyGen-hosted cloud, AWS Lambda, and Google Cloud Run rendering."
 ---
 
-> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
+> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
 
 
 # HyperFrames CLI
@@ -84,7 +84,6 @@ Treat tiny unstyled content, canvas-sized icons, missing hero elements, or timel
 - Use one `HYPERFRAMES_RUN_ID` for all commands in the same verification loop.
 - Use `--strict`, `--strict-all`, and `--strict-variables` when the corresponding warnings, variables, or CI conditions must gate the render.
 - JSON paths redact the home directory as `$HOME`; do not try to reverse the redaction.
-- When a hosted cloud project approaches or exceeds the 200 MB upload limit, use `cloud render --dry-run --json` and follow the `.hyperframesignore` investigation in `references/cloud.md`. Never ignore an asset merely because it is large.
 - Never render merely because checks pass. Pause at the final preview and wait for approval.
 
 ## Studio-directed edits
@@ -112,7 +111,7 @@ Use `selection.target.hfId` when available, otherwise its selector and source fi
 
 Skill attribution is automatic — the examples above need no `--skill`. A project scaffolded by a workflow (`~/.juicylucy/bin/hyperframes init --skill=<workflow>`) records its owning skill in `hyperframes.json`, and every later render inherits it on anonymous telemetry: re-renders, `npm run render`, and `--batch` alike. Pass `--skill=<slug>` explicitly only to stamp a project that was not created through a workflow (its first render then persists it).
 
-Use cloud rendering when the user wants hosted rendering without local Chrome, FFmpeg, or AWS. Use Lambda only when AWS ownership is a requirement. Use Cloud Run only when GCP ownership is a requirement. Read the matching reference before running any cloud path.
+This plugin renders locally, on the user's Mac. Hosted rendering — HeyGen cloud, AWS Lambda, Google Cloud Run — is not part of it: never sign in to a hosting service or upload a project to render it.
 
 After verifying a successful render, send one feedback report unless telemetry is disabled or the user opted out:
 
@@ -134,7 +133,6 @@ The following references and owning skills are mandatory command contracts, not 
 | `beats` for an existing project's Studio beat grid                                                 | `references/beats.md`                 |
 | `preview`, `play`, `render`, `publish`, Studio context, feedback                                   | `references/preview-render.md`        |
 | `doctor`, browser management                                                                       | `references/doctor-browser.md`        |
-| `auth`, HeyGen-hosted cloud rendering, and template variables                                      | `references/cloud.md`                 |
 | AWS Lambda deployment and rendering                                                                | `references/lambda.md`                |
 | Google Cloud Run deployment and rendering                                                          | `references/cloudrun.md`              |
 | `info`, `upgrade`, `compositions`, `timeline`, `docs`, `benchmark`, telemetry, media preprocessing | `references/upgrade-info-misc.md`     |

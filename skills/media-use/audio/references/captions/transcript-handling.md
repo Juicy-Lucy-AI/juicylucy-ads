@@ -1,5 +1,5 @@
 
-> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
+> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
 
 # Transcript Guide
 
@@ -62,36 +62,9 @@ var words = raw.filter(function (w) {
 
 For model-selection guidance by content type, see [`../transcribe.md`](../transcribe.md) → "Picking a model by content type".
 
-## Using External Transcription APIs
+## Transcribing in this plugin
 
-For the best accuracy, use an external API and import the result:
-
-**OpenAI Whisper API** (recommended for quality):
-
-```bash
-# Generate with word timestamps, then import
-curl https://api.openai.com/v1/audio/transcriptions \
-  -H "Authorization: Bearer $OPENAI_API_KEY" \
-  -F file=@audio.mp3 -F model=whisper-1 \
-  -F response_format=verbose_json \
-  -F "timestamp_granularities[]=word" \
-  -o transcript-openai.json
-
-~/.juicylucy/bin/hyperframes transcribe transcript-openai.json
-```
-
-**Groq Whisper API** (fast, free tier available):
-
-```bash
-curl https://api.groq.com/openai/v1/audio/transcriptions \
-  -H "Authorization: Bearer $GROQ_API_KEY" \
-  -F file=@audio.mp3 -F model=whisper-large-v3 \
-  -F response_format=verbose_json \
-  -F "timestamp_granularities[]=word" \
-  -o transcript-groq.json
-
-~/.juicylucy/bin/hyperframes transcribe transcript-groq.json
-```
+Transcription is local: `~/.juicylucy/bin/hyperframes transcribe` on the user's Mac. Audio is never sent to an external transcription service.
 
 ## If No Transcript Exists
 

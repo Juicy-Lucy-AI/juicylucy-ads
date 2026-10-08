@@ -3,14 +3,14 @@ name: media-use
 description: Agent Media OS, the single skill for every media need in a HyperFrames project. Resolve BGM, SFX, image, icon, brand logo, voice, color grade, or LUT into a frozen local file or paste-ready block + ledger record (one verb, `resolve`); generate via TTS / music / image models when the catalog misses; produce voiceover, transcription, captions, and background removal through one shared audio engine; operate on media (cut / reframe / transform); and reuse assets across projects. Also use for vague feedback that real footage looks dark, flat, boring, should feel retro/camcorder/print/ASCII, needs privacy, or needs a media reveal.
 ---
 
-> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
+> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
 
 
 # media-use
 
 The media OS for HyperFrames: resolve · generate · operate · remember — every media type, one skill, zero context noise.
 
-First run: install and sign in to the `heygen` CLI (the free-usage path), then verify with `~/.juicylucy/bin/hyperframes media-use resolve --doctor`. Setup and providers: `references/setup-providers.md`.
+In this plugin, music and voiceover come from the `juicy` command (the `juicy-cli` skill), and `~/.juicylucy/bin/hyperframes media-use resolve --type sfx` resolves sound effects from the renderer's own bundled library with no sign-in. Never install or sign in to another media provider for an ad. Verify with `~/.juicylucy/bin/hyperframes media-use resolve --doctor`.
 
 ## Resolve — the one verb
 
@@ -22,12 +22,12 @@ Returns one line: `resolved <id> → <path> (<type>, <metadata>)`. All search no
 
 | Type    | One-line intent                                                                  |
 | ------- | -------------------------------------------------------------------------------- |
-| `bgm`   | background music (HeyGen catalog, 10k+ tracks)                                   |
-| `sfx`   | sound effects (bundled 19-file library + catalog)                                |
+| `bgm`   | not here: music comes from `~/.juicylucy/bin/juicy audio music`                                   |
+| `sfx`   | sound effects (the renderer's bundled library; no sign-in)                       |
 | `image` | photos, backgrounds (HeyGen asset search, 75k+ vectors)                          |
 | `icon`  | icons, symbols (transparent)                                                     |
 | `logo`  | official brand marks (theSVG → GitHub avatar → favicon; never redrawn)           |
-| `voice` | TTS voiceover (HeyGen free-usage path; optional local Kokoro)                    |
+| `voice` | not here: voiceover comes from `~/.juicylucy/bin/juicy audio voiceover`                           |
 | `grade` | measured correction candidate; broad polish/stylization follows Media Treatments |
 | `lut`   | user-provided or explicitly chosen reusable validated `.cube` file               |
 
@@ -91,9 +91,8 @@ Rules that keep this a help, not nagware: **grounded, not generic** (no signal �
 | ------------------------------------------------------------------------- | -------------------------------- |
 | resolve / reuse / adopt / ingest, flags, cascade, inventory               | `references/resolve.md`          |
 | color grading, LUTs, smart grade (`--for`), grade-compare                 | `references/grading.md`          |
-| voiceover / TTS, music, SFX, captions, transcription (audio engine)       | `references/audio.md`            |
+| captions, transcription                                                   | `audio/references/transcribe.md` |
 | cut / reframe / transform existing media, exact error diffusion, HEVC     | `references/operations.md`       |
 | source-aware creative treatments, realtime effects, overlays, reveals     | `references/media-treatments.md` |
-| install + auth, provider table, RAM ladders, `--local-only`, `--provider` | `references/setup-providers.md`  |
 | remembered preferences + frozen recipes (user memory)                     | `references/memory.md`           |
 | ownership matrix, usage stats, telemetry, privacy (maintainer-facing)     | `references/meta.md`             |

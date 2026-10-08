@@ -1,5 +1,5 @@
 
-> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
+> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
 
 # Transcription
 
@@ -38,7 +38,7 @@ Create normalized word-level timestamps. **Always specify `--model` explicitly**
 
 1. Speech over silence / light background → `small.en`
 2. Speech over music, or music with vocals → start with `medium.en`
-3. Produced music track (vocals + full instrumentation) → start with `medium.en`; expect to need manual lyrics or an external API ([`captions/transcript-handling.md`](captions/transcript-handling.md) → "Using External Transcription APIs")
+3. Produced music track (vocals + full instrumentation) → start with `medium.en`; expect to need manual lyrics
 4. Multilingual → `medium` or `large-v3` (no `.en` suffix), pair with `--language`
 
 ## Output Shape
@@ -52,4 +52,4 @@ Compositions consume a flat array of word objects. The `id` (`w0`, `w1`, …) is
 ]
 ```
 
-For mandatory caption-quality checks, retry rules, and the OpenAI/Groq Whisper API import path, see `captions/transcript-handling.md`.
+For mandatory caption-quality checks and retry rules, see `captions/transcript-handling.md`.

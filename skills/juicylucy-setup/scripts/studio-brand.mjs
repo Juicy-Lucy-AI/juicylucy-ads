@@ -78,7 +78,9 @@ const LOADER_MARK = "hf-loader-mark";
 const SERVES_ASSETS = 'app.get("/assets/*"';
 
 const TEXT = /\.(js|mjs|css|json|svg|map|html)$/;
-const DEFAULT_LOGO = fileURLToPath(new URL("../assets/juicylucy-mark.png", import.meta.url));
+// An SVG, so it ships as text: Anthropic's directory holds a plugin whose script
+// reads an image file it cannot inspect (2026-10-07).
+const DEFAULT_LOGO = fileURLToPath(new URL("../assets/juicylucy-mark.svg", import.meta.url));
 
 /** `index-Ab12.js` → `index-Ab12-jl.js`; `x.js.map` → `x-jl.js.map`. */
 export function renamed(name) {
@@ -103,17 +105,27 @@ export function recolour(text) {
   return { text: out, count };
 }
 
-function mark(png) {
-  return (
-    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">' +
-    `<image href="data:image/png;base64,${png.toString("base64")}" width="512" height="512"/></svg>\n`
-  );
+/**
+ * Whether the bytes are an SVG document the Studio can show as the mark: one
+ * <svg> root, nothing scripted. A PNG handed over by mistake (the strict check
+ * once passed the old logo.png) would otherwise be written into favicon.svg
+ * as garbage and pass for branding.
+ */
+export function isSvgMark(bytes) {
+  const text = bytes.toString("utf8").trim().replace(/^<\?xml[^>]*\?>\s*/, "");
+  return text.startsWith("<svg") && text.endsWith("</svg>") && !/<script\b|\son[a-z]+\s*=/i.test(text);
 }
 
-function wordmark(png) {
+/** The mark itself: the brandbook's SVG, as it ships. */
+function mark(svg) {
+  const text = svg.toString("utf8").trim();
+  return `${text}\n`;
+}
+
+function wordmark(svg) {
   return (
     '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 28">' +
-    `<image href="data:image/png;base64,${png.toString("base64")}" width="28" height="28"/>` +
+    `<image href="data:image/svg+xml;base64,${Buffer.from(mark(svg)).toString("base64")}" width="28" height="28"/>` +
     '<text x="34" y="19.5" fill="#FAFAFA" font-family="Inter, -apple-system, system-ui, sans-serif" ' +
     'font-size="16" font-weight="700" letter-spacing="-0.2">JuicyLucy</text></svg>\n'
   );
@@ -162,7 +174,7 @@ export function readStudio(pkgDir) {
  * the rest. `files` are written before `index`, which is the one change that
  * makes any of them visible.
  */
-export function plan(studio, logoPng) {
+export function plan(studio, logoSvg) {
   const problems = [];
   if (studio.index.includes(MARKER)) return { already: true, problems, files: [], index: null };
 
@@ -214,15 +226,17 @@ export function plan(studio, logoPng) {
   if (!studio.hasFavicon) problems.push("the Studio has no favicon.svg");
 
   let stylesheet = false;
-  if (logoPng === null) {
-    problems.push("the JuicyLucy mark is not beside this script (assets/juicylucy-mark.png)");
+  if (logoSvg === null) {
+    problems.push("the JuicyLucy mark is not beside this script (assets/juicylucy-mark.svg)");
+  } else if (!isSvgMark(logoSvg)) {
+    problems.push("the JuicyLucy mark is not an SVG (assets/juicylucy-mark.svg)");
   } else if (!index.includes("</head>")) {
     problems.push("index.html has no </head> to put the stylesheet before");
   } else {
-    files.push({ path: join("assets", "juicylucy-mark.svg"), content: mark(logoPng) });
-    files.push({ path: join("assets", "juicylucy-logo.svg"), content: wordmark(logoPng) });
+    files.push({ path: join("assets", "juicylucy-mark.svg"), content: mark(logoSvg) });
+    files.push({ path: join("assets", "juicylucy-logo.svg"), content: wordmark(logoSvg) });
     files.push({ path: join("assets", "juicylucy-studio.css"), content: STYLESHEET });
-    if (studio.hasFavicon) files.push({ path: "favicon.svg", content: mark(logoPng), replace: true });
+    if (studio.hasFavicon) files.push({ path: "favicon.svg", content: mark(logoSvg), replace: true });
     index = index.replace("</head>", `  <link rel="stylesheet" href="/assets/juicylucy-studio.css" ${MARKER} />\n  </head>`);
     stylesheet = true;
   }
@@ -277,8 +291,8 @@ export function run(argv) {
   const lines = [];
   try {
     const studio = readStudio(args.pkgDir);
-    const logoPng = existsSync(args.logo) ? readFileSync(args.logo) : null;
-    const planned = plan(studio, logoPng);
+    const logoSvg = existsSync(args.logo) ? readFileSync(args.logo) : null;
+    const planned = plan(studio, logoSvg);
     if (planned.already) return { code: 0, lines: [`studio-brand: already branded (${studio.studioDir})`] };
     if (args.strict && planned.problems.length > 0) {
       return {

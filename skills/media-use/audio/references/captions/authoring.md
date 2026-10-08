@@ -1,5 +1,5 @@
 
-> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
+> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
 
 # Captions
 
@@ -154,7 +154,7 @@ Caption components ship with transparent backgrounds — they're pure overlays. 
 ## Further References
 
 - [`motion.md`](motion.md) — karaoke, marker effects, audio-reactive modulation, scatter exits.
-- [`transcript-handling.md`](transcript-handling.md) — input formats, quality checks, cleaning, external API fallback.
+- [`transcript-handling.md`](transcript-handling.md) — input formats, quality checks, cleaning.
 - `hyperframes-animation/rules/css-marker-patterns.md` — marker highlighting (deterministic, fully seekable).
 
 ## Constraints
