@@ -34,8 +34,9 @@ leaves out media-use's own audio engine with its third-party voice, music and
 sound-effect provider integrations and bundled sound effects, and
 hyperframes-cli's hosted cloud-rendering reference, and rewrites the lines
 that pointed at them. It limits the environment motion-doctrine's seam gate
-passes to the local preview server it starts, and rewords one sentence of
-hyperframes-audio that a security scanner misread. These are JuicyLucy's
+passes to the local preview server it starts and simplifies the pattern it
+reads Chrome's local address with, and moves one line break in
+hyperframes-audio, so a security scanner does not misread them. These are JuicyLucy's
 distribution changes.
 Each modified upstream file also carries a prominent modification notice.
 The pinned commit is recorded in

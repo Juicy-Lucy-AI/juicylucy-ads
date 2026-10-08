@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations, the environment a script passes to its local preview server, one sentence's wording and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
+// Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations, the environment a script passes to its local preview server and the pattern it reads Chrome's local address with, one line break and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
 // seam-gate.mjs — numeric Seam Gate verifier for HyperFrames films (motion-doctrine).
 // Zero npm dependencies: drives chrome-headless-shell over raw CDP (node >= 22).
 //
@@ -70,16 +70,18 @@ async function ensureServer() {
     const project = flag("project", null);
     if (!project) throw new Error("need --url or --project");
     const port = 5380 + Math.floor(Math.random() * 20);
-    // Only what the preview server needs (JuicyLucy: no credential reaches the child).
+    // Only what the preview server needs, each by name (JuicyLucy: no credential reaches the child).
     // HYPERFRAME_RUNTIME_URL stays unset: a wrong value fails silently as 200 HTML.
-    const env = {};
-    for (const name of [
-      "PATH", "HOME", "USER", "LOGNAME", "SHELL", "TMPDIR", "TERM", "TZ", "LANG", "LC_ALL", "LC_CTYPE",
-      "CHROME_PATH", "HYPERFRAMES_FFMPEG_PATH", "HYPERFRAMES_FFPROBE_PATH", "HYPERFRAMES_SKIP_SKILLS",
-      "HYPERFRAMES_NO_TELEMETRY",
-    ]) {
-      if (process.env[name] !== undefined) env[name] = process.env[name];
-    }
+    const {
+      PATH, HOME, USER, LOGNAME, SHELL, TMPDIR, TERM, TZ, LANG, LC_ALL, LC_CTYPE, CHROME_PATH,
+      HYPERFRAMES_FFMPEG_PATH, HYPERFRAMES_FFPROBE_PATH, HYPERFRAMES_SKIP_SKILLS, HYPERFRAMES_NO_TELEMETRY,
+    } = process.env;
+    const env = Object.fromEntries(
+      Object.entries({
+        PATH, HOME, USER, LOGNAME, SHELL, TMPDIR, TERM, TZ, LANG, LC_ALL, LC_CTYPE, CHROME_PATH,
+        HYPERFRAMES_FFMPEG_PATH, HYPERFRAMES_FFPROBE_PATH, HYPERFRAMES_SKIP_SKILLS, HYPERFRAMES_NO_TELEMETRY,
+      }).filter(([, value]) => value !== undefined),
+    );
     // `preview` backgrounds itself when stdin/stdout aren't TTYs, which they never are here: the
     // launcher would exit 0 before the server is up and detach it out of our process group.
     // Default to the REPO-LOCAL CLI whenever this skill is running from its repo
@@ -192,7 +194,7 @@ async function launchChrome() {
     const t = setTimeout(() => reject(new Error("chrome DevTools endpoint timeout")), 20_000);
     child.stderr.on("data", (d) => {
       buf += d;
-      const m = buf.match(/DevTools listening on (ws:\/\/\S+)/);
+      const m = buf.match(/DevTools listening on (\S+)/); // the local endpoint Chrome prints for itself
       if (m) {
         clearTimeout(t);
         resolve(m[1]);

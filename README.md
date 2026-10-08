@@ -70,8 +70,9 @@ Claude account.
 
 ## Support
 
-Write to plugin@juicylucy.io. The privacy policy is at https://www.juicylucy.io/privacy-policy and
-the terms at https://www.juicylucy.io/terms-conditions.
+- Email: plugin@juicylucy.io
+- Privacy policy: https://www.juicylucy.io/privacy-policy
+- Terms of service: https://www.juicylucy.io/terms-conditions
 
 Copyright Juicy Lucy AI, UAB. The plugin's own skills are proprietary (`LICENSE`); the HyperFrames
 skills it carries are Apache-2.0 (`THIRD_PARTY_LICENSES`, `NOTICE`).

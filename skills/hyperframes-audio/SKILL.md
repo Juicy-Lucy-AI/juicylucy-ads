@@ -3,7 +3,7 @@ name: hyperframes-audio
 description: "Use when audio already placed in a HyperFrames composition needs to be mixed: fade-in/fade-out, crossfade, track gain or volume, volume automation, ducking, a music bed that fights a voiceover (voiceover carve), effects on a track (EQ, compressor, limiter, gate, saturation, delay, reverb, chorus, phaser, bitcrush), automation envelopes drawn on a track's volume or any effect parameter, or one submix bus carrying a chain, a fader and an automation clock for several tracks at once (`<hf-audio-group>`). Don't use for sourcing or generating audio — finding BGM, SFX, or making a voiceover is `/media-use`. Don't use for clip timing or track layout, which is `/hyperframes-core`."
 ---
 
-> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations, the environment a script passes to its local preview server, one sentence's wording and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
+> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations, the environment a script passes to its local preview server and the pattern it reads Chrome's local address with, one line break and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
 
 
 # HyperFrames Audio
@@ -266,8 +266,8 @@ was written. Two ways that bites:
   that wrote the attribute never measured it.
 
 Both are invisible at the moment the carve is written: the analysis sums the
-voices it detected and never round-trips through group resolution, so the first
-pass comes out genuinely correct and only the next one is wrong. So give each role its
+voices it detected and never round-trips through group resolution, so the
+first pass is genuinely correct and only the next one is wrong. So give each role its
 own group — `music` for the bed, `voiceover` for the narration, `sfx` for the
 hits — and keep the group named in `sources` holding nothing but voices.
 
