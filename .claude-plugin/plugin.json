@@ -1,7 +1,7 @@
 {
   "name": "juicylucy-ads",
   "displayName": "JuicyLucy Ads",
-  "version": "0.31.0",
+  "version": "0.31.1",
   "description": "JuicyLucy's paid-media ad production: /video-ad-production and /static-ad-production, with the composition, motion and media skills a video run reads, the platform and workspace conventions both engines share, the brand facts they resolve, and /juicylucy-setup for the local toolchain.",
   "author": {
     "name": "Juicy Lucy AI, UAB",

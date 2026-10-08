@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
+// Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations, the environment a script passes to its local preview server, one sentence's wording and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
 // seam-gate.mjs — numeric Seam Gate verifier for HyperFrames films (motion-doctrine).
 // Zero npm dependencies: drives chrome-headless-shell over raw CDP (node >= 22).
 //
@@ -70,8 +70,16 @@ async function ensureServer() {
     const project = flag("project", null);
     if (!project) throw new Error("need --url or --project");
     const port = 5380 + Math.floor(Math.random() * 20);
-    const env = { ...process.env };
-    delete env.HYPERFRAME_RUNTIME_URL; // wrong value fails silently as 200 HTML
+    // Only what the preview server needs (JuicyLucy: no credential reaches the child).
+    // HYPERFRAME_RUNTIME_URL stays unset: a wrong value fails silently as 200 HTML.
+    const env = {};
+    for (const name of [
+      "PATH", "HOME", "USER", "LOGNAME", "SHELL", "TMPDIR", "TERM", "TZ", "LANG", "LC_ALL", "LC_CTYPE",
+      "CHROME_PATH", "HYPERFRAMES_FFMPEG_PATH", "HYPERFRAMES_FFPROBE_PATH", "HYPERFRAMES_SKIP_SKILLS",
+      "HYPERFRAMES_NO_TELEMETRY",
+    ]) {
+      if (process.env[name] !== undefined) env[name] = process.env[name];
+    }
     // `preview` backgrounds itself when stdin/stdout aren't TTYs, which they never are here: the
     // launcher would exit 0 before the server is up and detach it out of our process group.
     // Default to the REPO-LOCAL CLI whenever this skill is running from its repo

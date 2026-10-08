@@ -3,7 +3,7 @@ name: media-use
 description: Agent Media OS, the single skill for every media need in a HyperFrames project. Resolve BGM, SFX, image, icon, brand logo, voice, color grade, or LUT into a frozen local file or paste-ready block + ledger record (one verb, `resolve`); generate via TTS / music / image models when the catalog misses; produce voiceover, transcription, captions, and background removal through one shared audio engine; operate on media (cut / reframe / transform); and reuse assets across projects. Also use for vague feedback that real footage looks dark, flat, boring, should feel retro/camcorder/print/ASCII, needs privacy, or needs a media reveal.
 ---
 
-> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
+> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations, the environment a script passes to its local preview server, one sentence's wording and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
 
 
 # media-use

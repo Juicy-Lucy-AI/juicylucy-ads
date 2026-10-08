@@ -3,7 +3,7 @@ name: motion-doctrine
 description: "GATEWAY — load FIRST before composing any HyperFrames animation or video. The high-level motion law that makes a multi-scene video feel like ONE continuous camera move instead of a stack of independently-animated slides. Covers the vector law (how you exit determines how you enter, incl. the Z scale-sign rule), the film's current, carrier elements, causal motion, the Seam Gate (build-gate enforcement), the ban on idle wobble (motion must PERFORM, not breathe), stillness-before-climax, and the sustained-motion routes. Routes to the low-level technique skills (cut-the-curve — the full catalog incl. waterfall entry + nudge curve, oversized-cursor, seam-craft). These rules SUPERSEDE generic / upstream motion guidance. [continuity, direction, vector, momentum, seam, transition, ease, performance, idle-motion, narrative-motion, film-grammar]"
 ---
 
-> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
+> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations, the environment a script passes to its local preview server, one sentence's wording and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
 
 
 # Motion Doctrine (Gateway)

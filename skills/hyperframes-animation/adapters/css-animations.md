@@ -3,7 +3,7 @@ name: hyperframes-css-animations
 description: CSS animation adapter patterns for HyperFrames. Use when authoring CSS keyframes, animation-delay based timing, animation-fill-mode, animation-play-state, or CSS-only motion that HyperFrames must seek deterministically during preview and rendering.
 ---
 
-> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
+> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations, the environment a script passes to its local preview server, one sentence's wording and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
 
 
 # CSS Animations for HyperFrames

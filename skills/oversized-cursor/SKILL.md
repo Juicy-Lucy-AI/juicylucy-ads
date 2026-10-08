@@ -3,7 +3,7 @@ name: oversized-cursor
 description: House-style oversized macOS cursor technique for HyperFrames launch videos. Load whenever a scene involves cursors or a pointer-led action, when kicking off a UI scene, when igniting a morph/transition/typing run with a click, or when a scene reads as static, dead, or stale and needs a cheap high-yield source of motion to carry the viewer's eye and segment them out of the stale state. Covers cursor size/look (incl. brand-motif cursors), the off-screen entry law, tip-targeting and the click tap, click-ignites-the-next-beat, and exit / cross-scene handoff.
 ---
 
-> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
+> Modified by Juicy Lucy AI, UAB for JuicyLucy Ads: CLI invocations (pointed at the installed launchers, never npm latest), the review-approval reference, third-party install instructions, references to omitted provider integrations, the environment a script passes to its local preview server, one sentence's wording and/or frontmatter (description layout, upstream-only metadata) adjusted at build time. See the plugin root NOTICE for details.
 
 
 # Oversized Cursor — the eye-carrier
