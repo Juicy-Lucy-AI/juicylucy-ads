@@ -40,7 +40,7 @@
       "author": "PRO",
       "format": "F-VID",
       "extensions": ["mp4"],
-      "styles": ["videotextoverlay", "videoreaction", "beforeandafter", "videoother"],
+      "styles": ["videotextoverlay", "videoreaction", "videotestimonial", "beforeandafter", "videoother"],
       "styles_open_set": true
     }
   },

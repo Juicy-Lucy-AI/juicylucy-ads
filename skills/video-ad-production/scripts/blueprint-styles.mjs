@@ -9,5 +9,6 @@
 export const BLUEPRINT_STYLES = {
   "background-video-text-overlay": "videotextoverlay",
   "clapping-reaction": "videoreaction",
+  "ugc-testimonial": "videotestimonial",
   "before-after": "beforeandafter",
 };

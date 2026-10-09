@@ -41,7 +41,7 @@ Do not reach for it when:
   the argument cannot be made in ~120 characters, use `background-video-text-overlay`, where the
   block gets nine lines because nothing is competing for the middle of the frame.
 - The performer needs to **speak**. This blueprint's clip is silent and the mouth is doing
-  expression, not dialogue. A talking pitch is `car-testimonial` (planned).
+  expression, not dialogue. A talking pitch is `ugc-testimonial`.
 - The product's appearance is the argument.
 
 ## Anatomy

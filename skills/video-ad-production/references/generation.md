@@ -159,6 +159,12 @@ If a scene needs more than 15s, that is a **structure** error, not a generation 
 chained clips of 15s or less before generating. Fix the structure; do not ask the model for a longer
 clip.
 
+**A speaking shot is sized by its line, not by the timeline.** On `ugc-testimonial` a shot's
+duration is its line at no more than 2.7 words a second plus a second for the closed-mouth hold, and
+the composition then cuts it on the word, so the generated length never reaches the ad. Shots in one
+setting chain: each starts from the hold frame of the one before, taken with
+`scripts/speech-cuts.mjs frame` — `blueprints/ugc-testimonial.md` § Chaining a setting.
+
 ## Audio: the clip's own sound stays out of the ad
 
 **The ad does not use sound from a generated clip unless it genuinely needs it.** Generated audio is
@@ -176,7 +182,9 @@ when the shot contains a person. Do not. (`--multi-clip` is off for the same kin
 camera changes, which breaks the one-continuous-move rule.)
 
 Muted is correct for b-roll, stop-motion, background loops, and non-speaking characters — which is
-almost everything this workflow generates.
+almost everything this workflow generates. The exception is a speaking performer: on
+`ugc-testimonial` the shot's own speech **is** the soundtrack, laid in as audio ranges that mirror
+the cut (`blueprints/ugc-testimonial.md` § Soundtrack).
 
 Use the clip's sound **only** when: the brief asks for it; the clip is a speaking person whose dialogue
 belongs in the ad — and then the exact spoken words must be written **verbatim, in quotes**, into
@@ -187,10 +195,12 @@ explicit human instruction always outranks the silent default.
 soundtrack is laid into the composition at Step 4 and is never absent — `../SKILL.md` § Audio is not
 optional.
 
-**There is no text-to-speech role, and that is deliberate.** Neither live blueprint has a
-speaking performer: `background-video-text-overlay` makes its argument in the text block, and
-`clapping-reaction`'s performer is doing expression rather than dialogue. Do not reach for a
-text-to-speech, dubbing, or transcription model on either. The only speech in their audio is song
+**There is no text-to-speech role, and that is deliberate.** No blueprint uses synthetic speech:
+`background-video-text-overlay` makes its argument in the text block, `clapping-reaction`'s
+performer is doing expression rather than dialogue, and `ugc-testimonial`'s creator speaks in the
+shot itself — the line verbatim in the prompt, the voice described verbatim in every shot, lip-sync
+from the motion model. Do not reach for a text-to-speech, dubbing, voice-changer or transcription
+model on any of them. The only speech in their audio is song
 lyrics, which stay in their original language even when the ad is localised —
 `reference-iteration.md` § Lyrics are not copy, and they are not localised.
 
@@ -212,6 +222,11 @@ no app interface, no screen-recording overlay.
 ```
 
 `--aspect` is where framing is decided, not the prompt.
+
+**A product held in the shot keeps its label.** The bans above are about text the model invents and
+plates waiting for copy. A real product's printed label is product truth: name its exact words in
+the prompt and turn the preset off on those calls, writing the remaining bans yourself —
+`blueprints/ugc-testimonial.md` § First frames.
 
 The bans matter more than they look: generated on-image text is almost always misspelled, and a
 hallucinated logo in a paid ad is a brand-safety problem, not a cosmetic one.

@@ -29,7 +29,7 @@ hook, blueprint, and generation seed that produced it.
 | Launch film                    | Paid-media ad                                     |
 | ------------------------------ | ------------------------------------------------- |
 | One deliverable, approved once | Variants shipped together, judged by the platform |
-| Story arc across 30–90s        | Hook on frame 0, payoff by 3s, 6–15s total        |
+| Story arc across 30–90s        | Hook on frame 0, payoff by 3s, 6–15s total (a spoken testimonial 15–45s) |
 | Assets captured from the site  | Assets **generated** — first frame, then video    |
 | Sound design carries emotion   | Read sound-off, **never shipped silent**          |
 | Copy is brand voice            | Copy passes a **Meta compliance gate**            |
@@ -105,14 +105,21 @@ Where the audio comes from, in this order:
 3. **No reference and no instruction → generate a music bed** for the full duration —
    `references/generation.md` § `cassetteai/music-generator`.
 
+**A speaking blueprint's soundtrack is its own speech.** On `ugc-testimonial` the creator talks in
+the shots, and their voice, cut with the picture, is the soundtrack; the order above does not apply
+to it. A reference testimonial's audio is somebody's voice, so it is never reused — the blueprint's
+§ Soundtrack.
+
 A fade-out or a gain change on a **generated** bed is `/hyperframes-audio`'s job: it owns fades,
 track gain and ducking on audio already placed in the composition. A **preserved reference track is
 never** ducked, re-timed or processed — `references/reference-iteration.md` § Reuse the reference's
 soundtrack forbids it, and the audio skill's tools do not change that.
 
-**No TTS, no voiceover, no dubbing on either live blueprint.** Their audio is a song; the only
-speech in it is song lyrics, and **lyrics stay in their original language** even when the ad is
-localised into a market that does not speak it. A Spanish text block over an English-language track
+**No TTS, no voiceover, no dubbing on any blueprint.** On the two music-led blueprints
+(`background-video-text-overlay`, `clapping-reaction`) the audio is a song; the only speech in it is
+song lyrics, and **lyrics stay in their original language** even when the ad is localised into a
+market that does not speak it. On `ugc-testimonial` every spoken word comes from the creator's own
+mouth in the shot, in sync. A Spanish text block over an English-language track
 is a correct localisation, not a half-finished one.
 
 ## Workflow
@@ -288,12 +295,12 @@ the brief is the cheapest place to be wrong. Ask only what is missing.
 | `audience`               | specific enough to change the copy                                        |
 | `platform` / `placement` | `meta` / `tiktok`; `reels` / `feed` / `stories`                           |
 | `aspect`                 | derived from placement — Reels & Stories `9x16`, feed `4x5`, square `1x1` |
-| `duration`               | seconds; 6–15 unless the brief argues otherwise                           |
+| `duration`               | seconds; 6–15, or the blueprint's own range (`ugc-testimonial` 15–45)     |
 | `blueprint`              | the ad type, or blank and decided at Step 1                               |
 | `variants`               | how many ship this round                                                  |
 | `reference`              | path or URL of the reference creative, or `none`                          |
 | `claims`                 | what may and may not be said, verbatim                                    |
-| `sound`                  | `reference` (default with a reference), `music`, or `vo` — never silent   |
+| `sound`                  | `reference` (default with a reference), `music`, `speech` (a speaking blueprint), or `vo` — never silent |
 
 For a preservation brief, add two explicit lists under `## Changes` and `## Preserves`, and name
 which **one or two visual attributes** move — subject, wardrobe, setting, role read, framing,
@@ -325,8 +332,15 @@ structure, the overlay contract, the generation prompts, and the variant axes �
 those here. With a reference, the reference selects the blueprint and usually pins several axes as
 held constant.
 
-**Gate:** one blueprint id recorded in `AD_BRIEF.md`, and its file read. State the choice in one
-line and continue — this is not a stop.
+**No row fits?** A brief can need a shape no blueprint covers: a UGC insert inside a long ad, two
+people talking, a pet or a pair of hands as the "creator", a three-minute story. Build it from the
+closest blueprint and the craft that transfers (`references/ugc-craft.md` for anything UGC), record
+`custom` with the closest blueprint's id in `AD_BRIEF.md`, and say in the closing reply which parts
+were outside the tested recipes. A blueprint's limits describe what was tested; they do not forbid
+the rest.
+
+**Gate:** one blueprint id (or `custom` plus the closest id) recorded in `AD_BRIEF.md`, and its file
+read. State the choice in one line and continue — this is not a stop.
 
 ---
 
@@ -377,13 +391,17 @@ never a drawn box waiting for copy: the plate and the copy are composition layer
 footage at Step 4 from the `COPY.md` variables. A frame that comes back carrying a blank plate, an
 empty banner or sign, a sticker outline, or any on-image text fails this gate before the user sees
 it — regenerate, and never show it with a promise that the approved copy will fill it later.
-`references/generation.md` § The footage carries no text and no place for text.
+`references/generation.md` § The footage carries no text and no place for text. **A product's own
+printed label is not on-image text**: on a blueprint that puts the product in hand, the label is
+product truth and is prompted for, exactly (`blueprints/ugc-testimonial.md` § First frames).
 
 `juicy` freezes every asset it makes under `.media/` and writes its `.media/manifest.jsonl` record
 — model, prompt, seed, hash — in the same call; an asset from the image tool is recorded by hand in
 the same shape. Then run the gate, `~/.juicylucy/bin/juicy manifest verify --project . --require-video`, and fix what
 it names before going on. Generated clips are **mounted muted** — the default video model bakes
-ambient sound into every clip, and it fights the ad's soundtrack. That is a rule about the **clip**, not
+ambient sound into every clip, and it fights the ad's soundtrack — except a speaking blueprint's
+shots, whose speech is the soundtrack and goes in as audio ranges (`blueprints/ugc-testimonial.md`
+§ The edit). That is a rule about the **clip**, not
 about the **ad**: the soundtrack goes in at Step 4, and it is never absent (§ Audio is not optional).
 
 **Demux the soundtrack to an audio file.** An `<audio>` element must point at an audio
@@ -410,7 +428,9 @@ per variant: `check` and `snapshot` take a project directory and always open its
 `index.html`, so variants sitting in `compositions/` cannot be validated at all, and a
 blank root beside them fails lint as `blank_root_with_standalone_composition`.
 `compositions/` is for the *scenes* of one ad, mounted from `index.html` — not for
-sibling deliverables.
+sibling deliverables. The one case variables cannot carry is a **spoken** variant on
+`ugc-testimonial`: a different line is a different cut, and a timeline is not a variable — that
+blueprint's § Variant axes says how those are built.
 
 **Replace the scaffold, do not build around it.** `init --example blank` writes a placeholder
 `<h1 id="title" class="clip">Title</h1>` spanning the root's first 10 seconds, and centres
@@ -450,8 +470,8 @@ optional).
 
 **Gate:** `~/.juicylucy/bin/hyperframes lint` is clean; the composition names its frozen media by
 **root-relative** paths (`.media/...`, never `../`); every copy slot the blueprint names is
-a declared variable with a fallback; a full-duration audio track is present, pointing at an
-audio file; nothing of the scaffold's placeholder is left (no clip still reading `Title`).
+a declared variable with a fallback; audio covers the full duration — one track, or a speaking
+blueprint's speech ranges — each pointing at an audio file; nothing of the scaffold's placeholder is left (no clip still reading `Title`).
 
 ---
 
@@ -545,6 +565,7 @@ recorded, each with its compliant alternative.
 | `[references/reference-manifest.md](references/reference-manifest.md)`   | Step 0: the gate — every reference on disk, playable, traceable. |
 | `[references/ad-library.md](references/ad-library.md)`                   | Step 0: the reference is an Ads Library link, not a file.        |
 | `[blueprints-index.md](blueprints-index.md)`                             | Step 1: pick the ad type.                                        |
+| `[references/ugc-craft.md](references/ugc-craft.md)`                     | Any step, whenever footage should feel like a phone video — inside a blueprint or in a shape none covers. |
 | `[references/ad-copy.md](references/ad-copy.md)`                         | Step 2: write copy; the compliance gate.                         |
 | `[references/generation.md](references/generation.md)`                   | Step 3: the image tool, the provider's models, prompts, freezing, seeds. |
 | the resolved `brand-<slug>` skill                                        | **Step 0**: product truth, claims, palette, type, end card.       |

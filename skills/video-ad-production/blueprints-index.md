@@ -15,9 +15,11 @@ Match on what the **footage** is doing, not on the product category.
 | The ad is…                                                                         | Blueprint                       | Status  |
 | ---------------------------------------------------------------------------------- | ------------------------------- | ------- |
 | A person reacting to camera — clapping, nodding, expressions carrying the payoff   | `clapping-reaction`             | live    |
+| One creator talking to camera, product in hand, telling it in their own words      | `ugc-testimonial`               | live    |
 | Generated ambient/lifestyle footage under a text message that carries the argument | `background-video-text-overlay` | live    |
 | A state change shown as two footage states, cut or wiped against each other        | `before-after`                  | planned |
-| A person to camera in a confined, high-trust setting delivering the pitch          | `car-testimonial`               | planned |
+| Two or more people talking to each other on camera about the product             | `multi-creator`                 | planned |
+| A creator cut out and placed over the user's own footage (an app, a dashboard)     | `greenscreen`                   | planned |
 
 `clapping-reaction` sits **above** `background-video-text-overlay` deliberately: both put a static
 text block over generated footage, so a reaction ad matches the second row too, and first match
@@ -30,9 +32,16 @@ text overlay running on top of it" — is exactly this shape. `clapping-reaction
 rather than `FB-videotextoverlay` for that same reason read the other way: its footage is _related_
 to the overlay — the performer is reacting to the claim — so the older token describes it wrongly.
 
-`background-video-text-overlay` and `clapping-reaction` are built. The others are named here so the
-routing surface is stable while they are added; do not attempt to build from a `planned` row — say
-it is not built yet.
+`background-video-text-overlay`, `clapping-reaction` and `ugc-testimonial` are built. The others are
+named here so the routing surface is stable while they are added. A `planned` row has no recipe:
+never present it as built. When a brief still needs that shape, say it is not a tested recipe and
+build it as a custom piece from the craft that exists — for anything UGC-feeling (a talking
+creator, two people, hands, a pet, a long story, a UGC insert inside another ad) that craft is
+`references/ugc-craft.md`.
+
+`ugc-testimonial` is the one blueprint where the performer **speaks**: the clip's own sound is the
+soundtrack, the ad runs 15–45 s, and it is cut on the word. A person who claps or reacts without
+speaking is still `clapping-reaction`; a talking person is never forced into it.
 
 <blueprints>
 <blueprint id="background-video-text-overlay" aspects="9x16, 4x5, 1x1" duration="6-15s" status="live">
@@ -48,6 +57,13 @@ claim — the clap is the metronome and the **face** is what sells. Inherits the
 contract but the face owns the middle of the frame, so the block drops to four lines below the chin
 and the varied axis becomes the expression arc rather than the hook. Reach for it when the claim is
 one a person would visibly react to and the payoff should land on a face rather than in a sentence.
+</blueprint>
+<blueprint id="ugc-testimonial" aspects="9x16, 4x5" duration="15-45s" status="live">
+One creator talks to camera on their phone, product in hand, and tells it in their own words — hook,
+story, find, proof, nudge — across speaking shots of 5–10 s, chained within a setting and cut on
+the word, as a fast jump-cut edit or a calmer natural-pace edit. The clip's own speech is the soundtrack, captions carry it for the muted scroll, and
+one voice description holds the voice from shot to shot. Reach for it when the argument is a
+personal story said by a person rather than a sentence in a block.
 </blueprint>
 </blueprints>
 

@@ -58,6 +58,10 @@ These are **not** the statics values. The opening set:
   under a short text block. This is the `clapping-reaction` blueprint. Distinct from
   `FB-videotextoverlay` because the footage is _related_ to the overlay rather than independent of
   it, which is what makes the two worth reporting separately.
+- `FB-videotestimonial` — one creator talking to camera, product in hand, in their own words. This
+  is the `ugc-testimonial` blueprint. Distinct from `FB-videoreaction` because the performer
+  **speaks** and the speech carries the argument; a reaction ad's performer is silent under a text
+  block.
 - `FB-beforeandafter` — a persona unsatisfied before the product, satisfied after.
 - `FB-videoother` — anything not yet named.
 
