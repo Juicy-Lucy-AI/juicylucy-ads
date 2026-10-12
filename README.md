@@ -25,6 +25,28 @@ traceable, and `/juicylucy-setup`, which gets your Mac ready. Product facts, the
 not make, and its colours and type come from a brand skill. The first time you ask for an ad, the
 plugin creates that brand skill with you in `~/.claude/skills`.
 
+## Install
+
+Either way gives you the same plugin, `juicylucy-ads` from the `juicylucy` marketplace.
+
+- **Without a terminal**: open
+  <https://claude.ai/desktop/customize/plugins/new?marketplace=Juicy-Lucy-AI/juicylucy-ads&plugin=juicylucy-ads>
+  — it opens the Claude desktop app at Add marketplace with the repository filled in. Keep it
+  syncing automatically, choose Sync, and install JuicyLucy Ads. No desktop app yet? That page
+  offers the download, or the same step in your browser:
+  <https://claude.ai/customize/plugins/new?marketplace=Juicy-Lucy-AI/juicylucy-ads&plugin=juicylucy-ads>
+  By hand it is Customize, then Plugins, then add a marketplace, where you
+  paste `Juicy-Lucy-AI/juicylucy-ads`. The plugin comes to Claude Code on the same account by
+  itself, and new versions follow without you doing anything.
+- **In Claude Code**:
+
+  ```
+  /plugin install juicylucy-ads --marketplace Juicy-Lucy-AI/juicylucy-ads
+  ```
+
+  Then turn on automatic updates once: run `/plugin`, open Marketplaces, choose `juicylucy` and
+  enable auto-update. Without it, a new version waits until you update the marketplace yourself.
+
 ## Try it
 
 In Claude Code, from the folder you keep the campaign in:

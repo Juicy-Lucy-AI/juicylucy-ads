@@ -1,0 +1,15 @@
+{
+  "name": "juicylucy",
+  "description": "JuicyLucy's ad-production plugin for Claude Code.",
+  "owner": {
+    "name": "Juicy Lucy AI, UAB",
+    "email": "plugin@juicylucy.io"
+  },
+  "plugins": [
+    {
+      "name": "juicylucy-ads",
+      "source": "./",
+      "description": "JuicyLucy's paid-media ad production: /video-ad-production and /static-ad-production, with the composition, motion and media skills a video run reads, the platform and workspace conventions both engines share, the brand facts they resolve, and /juicylucy-setup for the local toolchain."
+    }
+  ]
+}
