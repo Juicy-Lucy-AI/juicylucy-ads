@@ -334,7 +334,7 @@ Example:
 
 ### `~/.juicylucy/bin/juicy video generate`
 
-Animate an approved first frame into a clip Image-to-video. The prompt describes only the motion. The default model always generates clip audio and takes 5–15 s. `~/.juicylucy/bin/juicy catalog list --role motion` shows every model, what it is best for and what it costs, and --model picks one. Output: .media/video/<variant>.mp4 with a manifest record whose `from` names the frame.
+Animate an approved first frame into a clip Image-to-video. The prompt describes only the motion. The default model always generates clip audio and takes 5–15 s. `~/.juicylucy/bin/juicy catalog list --role motion` shows every model, what it is best for and what it costs, and --model picks one. A reference-to-video model (minimax-h3-max-reference) also takes --reference-image and --reference-audio, which hold one creator's face and voice across clips; the prompt names them Image 1, Audio 1 … in the order given. Output: .media/video/<variant>.mp4 with a manifest record whose `from` names the frame and whose params list any reference files.
 
 ```
 ~/.juicylucy/bin/juicy video generate --image <path> --duration <n> --variant <name> [options]
@@ -358,6 +358,8 @@ Animate an approved first frame into a clip Image-to-video. The prompt describes
 | `--seed <n>` | integer |  | 1 |  | Seed, recorded in the manifest; --force draws a fresh one unless this is given |
 | `--variant <name>` | string | yes |  |  | Variant name; the output is .media/video/<variant>.mp4 |
 | `--resolution <360p|480p|540p|720p|768p|1080p|4k>` | string |  | "720p" | 360p \| 480p \| 540p \| 720p \| 768p \| 1080p \| 4k | Output resolution; which values a model accepts is in the catalog |
+| `--reference-image <path>` | string (repeatable) |  |  |  | The creator's portrait, to keep their face (local path, uploaded for you): one png, jpeg or webp file, which the prompt names Image 1. Reference-to-video models only |
+| `--reference-audio <path>` | string (repeatable) |  |  |  | A voice to keep: 2–15 s of the creator speaking a line that is not in the script (local path, uploaded for you); repeat for more, up to 3 wav or mp3 files and 15 s in all, which the prompt names Audio 1, Audio 2 … in the order given. Reference-to-video models only |
 | `--with-audio` | boolean |  | off |  | Let the model generate clip audio, on models with an audio switch (off by default); the default model always generates it |
 | `--multi-clip` | boolean |  | off |  | Allow the model's multi-clip camera changes (off by default; models with a multi-clip switch only) |
 | `--negative-prompt <text>` | string |  |  |  | Appended to the preset's negative prompt |

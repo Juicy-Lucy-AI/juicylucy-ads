@@ -80,7 +80,7 @@ HYPERFRAMES_VERSION="${JUICYLUCY_HYPERFRAMES_VERSION:-0.8.71}"
 # test. Never `latest`: a moving tag installs code nobody has tested with this
 # release. A path to a packed tarball in JUICYLUCY_JUICY_CLI_SPEC lets an
 # unpublished build be tested through this script.
-JUICY_VERSION="${JUICYLUCY_JUICY_VERSION:-0.1.7}"
+JUICY_VERSION="${JUICYLUCY_JUICY_VERSION:-0.1.8}"
 JUICY_CLI_SPEC="${JUICYLUCY_JUICY_CLI_SPEC:-@juicylucy/cli@$JUICY_VERSION}"
 NODE_MIN=22
 ONLY=""

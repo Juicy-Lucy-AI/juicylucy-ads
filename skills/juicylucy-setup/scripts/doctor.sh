@@ -189,7 +189,7 @@ fi
 # missing sign-in.
 # The version install.sh pins — the same value as `version` in the repo's
 # build/juicy-cli.lock, kept in step by a test.
-JUICY_EXPECTED="0.1.7"
+JUICY_EXPECTED="0.1.8"
 JUICY_BIN=$(first_exec "$JUICYLUCY_HOME/bin/juicy" "$JUICYLUCY_HOME/node_modules/.bin/juicy" "$(resolve juicy)")
 if [ -z "$JUICY_BIN" ]; then
   status juicy missing "the command that generates images, video and music — install.sh --only juicy"

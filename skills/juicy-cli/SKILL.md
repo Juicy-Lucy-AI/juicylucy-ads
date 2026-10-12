@@ -68,6 +68,15 @@ than ten times. Set `--max-cost` from the quote you expect, and keep the brief's
 for the upgrade in mind: a person's face in close-up (UGC-style clips), a hero shot, a long single
 take, or believable physics is a reason; "better" alone is not.
 
+**One creator across several clips.** When the brief has the same person speak in more than one
+shot or scene, make every one of those clips with `--model minimax-h3-max-reference` (priced like
+`minimax-h3-max`). The clip still opens on `--image`; one `--reference-image <portrait>` holds
+the face and `--reference-audio <anchor>` holds the voice. The anchor is 5–15 s (wav or mp3) of that
+person speaking a line that is not in the script, such as the audio of a casting clip; reuse the
+same portrait and anchor for every clip of them. Name the files in the prompt in the order given,
+then give the line: `Maya is the woman in Image 1. Her voice is Audio 1. She says: "…"`. Without
+a recurring speaker, stay on the default.
+
 ## Typical round
 
 ```bash
